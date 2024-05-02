@@ -1,0 +1,32 @@
+*{
+    margin-top: 10%;
+
+}
+body{
+    background-color: whitesmoke;
+
+}
+.box{
+    font-size: 28px;
+    position: relative;
+    left: 40%;
+    width: 240px;
+    height: 80px;
+    border: 2px solid cadetblue;
+    border-radius: 5px ;
+    box-shadow: 4px 4px 4px 4px gray;
+
+}
+.clock{
+    text-align: center;
+    color: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);;
+}
+#hrs{
+    color: blue;
+}
+#min{
+    color: rgb(60, 206, 44);
+}
+#sec{
+    color: rgb(247, 69, 29);
+}

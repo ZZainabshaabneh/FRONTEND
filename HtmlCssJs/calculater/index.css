@@ -1,0 +1,40 @@
+/* يطبق هذا الجزء من الكود على كل العناصر (*) وكذلك العناصر قبل (::before) وبعد (::after) كل عنصر */
+*,*::before,*::after{
+    box-sizing: border-box; /* تحدد كيف يتم حساب العرض والارتفاع الإجمالي للعناصر، هنا تشمل الpadding والborder ضمن حساب العرض والارتفاع */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* تحدد نوع الخط للنص داخل العناصر */
+    font-weight: normal; /* تحدد سُمك الخط */
+}
+
+/* يطبق هذا الجزء من الكود على عنصر الجسم (body) */
+body{
+    padding: 0; /* يحدد البادئة للجسم، هنا استخدام auto لا يكون له تأثير محدد في هذا السياق */
+    margin: 0; /* يزيل الهامش حول الجسم */
+    background: linear-gradient(to right,#444,#cf2424); /* يخلق تدرج لوني يبدأ من اللون #444 إلى اللون #cf2424 من اليسار إلى اليمين */
+}
+
+/* يطبق هذا الجزء من الكود على العنصر ذو الفئة calculator-grid */
+.calculator-grid{
+    display: grid; /* يحدد نوع العرض كشبكة */
+    justify-content: center; /* يحدد كيفية محاذاة العناصر داخل الحاوية على المحور الرئيسي (هنا يتم محاذاتها للوسط) */
+    align-items: center; /* يحدد كيفية محاذاة العناصر على المحور العرضي (هنا يتم محاذاتها للوسط) */
+    min-height: 100vh; /* يحدد الارتفاع الأدنى للحاوية كنسبة مئوية من ارتفاع النافذة */
+    grid-template-columns: repeat(4,100px); /* يحدد أربعة أعمدة بعرض 100 بكسل لكل منها */
+    grid-template-rows: minmax(120px,auto) repeat(5,100px); /* يحدد الصفوف، الصف الأول له حد أدنى 120px ويتكيف تلقائيا، ويتبعه خمس صفوف بارتفاع 100px لكل منها */
+}
+.calculator-grid > button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid whitesmoke;
+    outline: none;
+    background-color: aquamarine;
+}
+.calculator-grid > button:hover{
+    background-color: azure;
+}
+.span-two{
+    grid-column: span 2;
+}
+.output{
+    grid-column: 1/-1;
+    background-color: bisque;
+}

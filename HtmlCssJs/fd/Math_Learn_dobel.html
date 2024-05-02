@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+{% if custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/' + custom_css + '.css')}}">
+
+{% endif %}
+
+<div class="inputs">
+    <h2>Add Text</h2>
+    <div class="data">
+        <input type="text" id="inp">
+        <button id="btn">Add</button>
+    </div>
+</div>
+
+<div class="list">
+    <div class="box">
+        <h2>Box</h2>
+        <p class="item">item</p>
+        <p class="item">item</p>
+        <p class="item">item</p>
+        <p class="item">item</p>
+    </div>
+    
+    <div class="box">
+        <h2>Box</h2>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='JavaScrept/Math_learn.js')}}"></script>
+
+
+
+{% endblock %}

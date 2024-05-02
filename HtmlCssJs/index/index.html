@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blobs Waving Effect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <script>
+        let blobs = [];
+        let mouseBlob;
+        let canvasSize = 400;
+
+        function setup() {
+            createCanvas(canvasSize, canvasSize);
+            for (let i = 0; i < 3; i++) {
+                blobs.push(new Blob(random(width), random(height)));
+            }
+        }
+
+        function draw() {
+            background(255);
+
+            for (let blob of blobs) {
+                blob.update();
+                blob.display();
+            }
+
+            if (mouseIsPressed) {
+                mouseBlob.update(mouseX, mouseY);
+                mouseBlob.display();
+                for (let blob of blobs) {
+                    if (blob !== mouseBlob) {
+                        blob.intersect(mouseBlob);
+                    }
+                }
+            }
+        }
+
+        class Blob {
+            constructor(x, y) {
+                this.pos = createVector(x, y);
+                this.size = 50;
+                this.wave = 0;
+            }
+
+            update(targetX = this.pos.x, targetY = this.pos.y) {
+                this.pos.x += (targetX - this.pos.x) * 0.1;
+                this.pos.y += (targetY - this.pos.y) * 0.1;
+                this.wave += 0.1;
+            }
+
+            display() {
+                noStroke();
+                fill(0, 100, 200, 150);
+                let r = this.size + sin(this.wave) * 10;
+                ellipse(this.pos.x, this.pos.y, r, r);
+            }
+
+            intersect(other) {
+                let d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
+                if (d < this.size / 2 + other.size / 2) {
+                    let newSize = map(d, 0, this.size / 2 + other.size / 2, this.size, 0);
+                    this.size = constrain(newSize, 0, this.size);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #un{
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+
+        }
+        #bolb , #bolb2, #bolb3, #bolb4{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 70% 40% 90% 28% /42% 42% 56% 48% ;
+            animation: du 3.75s linear infinite;
+        }
+        #bolb{
+            width: 200px;
+            height: 150px;
+            background-color: blueviolet;
+            margin-top: 270px;
+            margin-left: 80px;
+        
+        }
+        #bolb2{
+            width: 220px;
+            height: 200px;
+            background-color: navy;
+            margin-top: 350px;
+            margin-left: 350px;
+        }
+        #bolb3{
+            width: 90px;
+            height: 90px;
+            background-color: lawngreen;
+            margin-top: 50px;
+            margin-left: 320px;
+        }
+        #bolb4{
+            background-color: saddlebrown;
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+        
+    
+        @keyframes du {
+            0%,100%{
+                border-radius: 72% 40% 90% 68% /42% 42% 56% 48% ;
+            }
+            30%{
+                border-radius: 42% 56% 72% 28% /28% 28% 72% 72% ;
+
+            }
+            60%{
+                border-radius: 100% 56% 90% 100% /100% 100% 56% 56% ;
+
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="un">
+    <div id="bolb" class="bolb"></div>
+    <div id="bolb2" class="bolb"></div>
+    <div id="bolb3" class="bolb"></div>
+    <div id="bolb4" class="bolb"></div>
+    </div>
+    <script>
+        const blobs = document.querySelectorAll('.bolb');
+            
+        blobs.addEventListener("mouseover", function() {
+            blobs.forEach(resizeBy(20,20));
+        
+        });
+    </script>
+</body>
+</html>

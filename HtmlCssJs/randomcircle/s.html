@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waving Blobs Interaction</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let blob1 = { x: 100, y: 200, radius: 30 };
+    let blob2 = { x: 300, y: 200, radius: 30 };
+
+    function drawBlob(blob) {
+      ctx.beginPath();
+      ctx.arc(blob.x, blob.y, blob.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'blue';
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function update() {
+      // Update blob positions (simulate waving)
+      blob1.y = 200 + Math.sin(Date.now() / 300) * 10;
+      blob2.y = 200 + Math.cos(Date.now() / 300) * 10;
+
+      // Check for collision
+      const distance = Math.sqrt((blob1.x - blob2.x) ** 2 + (blob1.y - blob2.y) ** 2);
+      if (distance < blob1.radius + blob2.radius) {
+        // Modify blob2 size based on blob1 size
+        blob2.radius += 1;
+      }
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw blobs
+      drawBlob(blob1);
+      drawBlob(blob2);
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+  </script>
+</body>
+</html>

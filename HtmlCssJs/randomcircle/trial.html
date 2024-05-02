@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blobs Simulation</title>
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="400"></canvas>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Blob class
+    class Blob {
+        constructor(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.velocity = { x: Math.random() - 0.5, y: Math.random() - 0.5 };
+            this.surfaceTension = 0.05;
+        }
+
+        update() {
+            this.x += this.velocity.x;
+            this.y += this.velocity.y;
+            
+            // Bounce off walls
+            if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
+                this.velocity.x *= -1;
+            }
+            if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
+                this.velocity.y *= -1;
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+    
+    // Create blobs
+    const blobs = [];
+    for (let i = 0; i < 4; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const radius = Math.random() * 50 + 20; // Random radius between 20 and 70
+        const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        blobs.push(new Blob(x, y, radius, color));
+    }
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        blobs.forEach(blob => {
+            blob.update();
+            blob.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+</script>
+</body>
+</html>

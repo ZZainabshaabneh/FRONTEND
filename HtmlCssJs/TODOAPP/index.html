@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="todocountinar">
+        <form id="add-form">
+            <input type="text" placeholder="new ToDo" id="todoinput">
+            <button type="submit" id="todobin">ADD+</button>
+        </form>
+        <div class="boxcountaner">
+        <div class="box" id="todo">
+            <h3 class="heading">ToDos</h3>
+            <p class="task" draggable="true">Django</p>
+            <p class="task" draggable="true">React</p>
+            <p class="task" draggable="true">js</p>
+        </div>
+        <div class="box" id="do">
+            <h3 class="heading">In Progress</h3>
+            <p class="task" draggable="true">Python</p>
+            
+        </div>
+        <div class="box" id="to">
+            <h3 class="heading">Done</h3>
+            <p class="task" draggable="true">Html</p>
+            <p class="task" draggable="true">Css</p>
+        
+        </div>
+    </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

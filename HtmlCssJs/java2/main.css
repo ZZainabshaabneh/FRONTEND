@@ -1,0 +1,17 @@
+div{
+font-size: 30px;
+line-height: 2;
+}
+.but{
+background-color: aqua;
+border: none;
+font-weight: bold;
+padding: 6px;
+color: #000;
+position: fixed;
+border-radius: 4px;
+bottom: 20px;
+right: 20px;
+cursor: pointer;
+display: none;
+} 
